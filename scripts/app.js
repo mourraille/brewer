@@ -112,6 +112,6 @@ function formatDisplayableVariables() {
     }
 }
 
-setInterval(function(){ plot(); }, 2000);
+setInterval(function(){ plot(); }, 1000);
 
 
