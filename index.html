@@ -1,0 +1,49 @@
+<html>
+<head  style="-webkit-app-region: drag">
+    <div class="container">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <br>
+            <div class="container-fluid">
+                <a href="http://www.instagram.com/manatibrews" target="_blank"><img alt="Brand" src="logo_min.png" style="height: 15%;"></a>
+            </div>
+        </nav>
+    </div>
+
+    <!--electron-->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script type="text/javascript" src="./node_modules/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+    <script src="scripts/app.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="scripts/timer.js"></script>
+
+    <!---->
+
+    <!--DESCARGAR!!!-->
+    <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+    <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+    <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+    <!---->
+</head>
+
+<body  style="-webkit-app-region: drag">
+<div class="container-fluid">
+    <div class="bs-callout bs-callout-info" id="callout-navs-tabs-plugin">
+
+        <div id="data" style="margin-top: 12.22%; text-align: center">
+            <h3 id="temp"></h3>
+            <h4 id="batt"></h4>
+        </div>
+
+        <div id="chartdiv" style="-webkit-app-region: no-drag"></div>
+
+        <div style="text-align: center; margin-top: 0%">
+            <h2><time>00:00:00</time></h2>
+            <button id="start">START</button>
+            <button id="stop">PAUSE</button>
+            <button id="clear">RESET</button>
+        </div>
+</body>
+<h6 style="color: darkgray; font-size: 68%; margin-top: -15px;">Brewer v1.0 by <a href="https://github.com/mourraille" target="_blank">mourraille</a> 2017</h6>
+</html>

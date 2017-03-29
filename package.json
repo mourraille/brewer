@@ -1,0 +1,16 @@
+{
+  "name": "Brewer",
+  "version": "1.0.0",
+  "description": "Brewing app developed for Manatí Brews, Costa Rica.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "author": "M.Mourraille",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^1.6.2",
+    "electron-rebuild": "^1.5.7"
+  }
+}
