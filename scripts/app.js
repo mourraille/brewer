@@ -11,19 +11,21 @@ var chartData;
 var deg;
 var percentage;
 var {ipcRenderer, remote} = require('electron');
-
+var c;
 
 window.onload = function () {
     chartData = [];
+    c = $('#cre').html();
     plot();
 }
 
 
 function plot() {
    var data = ipcRenderer.sendSync('poll', 'DATA');
-   this.deg = data.batt;
+   this.deg = data.batt -45;
     this.percentage = data.batt;
     if(data.flag === 1) {
+        $('#cre').html(c);
         formatDisplayableVariables();
         var chartData = generateChartData();
         var chart = AmCharts.makeChart("chartdiv", {
@@ -74,7 +76,12 @@ function plot() {
             chart.zoomToIndexes(chartData.length, chartData.length - 100);
         }
 
-    } else { $("#temp").html("Attempting connection to controller...");}
+    } else {
+
+        $("#temp").html("Attempting connection to controller...");
+        $("#chartdiv").html('<img src="spinner.gif" style="margin-left: 27%;" height="500" width="600"/>');
+        $('#cre').html("");
+    }
 }
 
 function generateChartData() {
@@ -112,6 +119,6 @@ function formatDisplayableVariables() {
     }
 }
 
-setInterval(function(){ plot(); }, 1000);
+setInterval(function(){ plot(); }, 2000);
 
 

@@ -7,10 +7,8 @@
  */
 
 var electron = require('electron');
-var {app,ipcMain} = electron;
-
 var noble  = require('noble');
-
+var {app,ipcMain} = electron;
 var BrowserWindow = electron.BrowserWindow;
 
 var mainWindow = null;
