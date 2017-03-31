@@ -21,6 +21,7 @@ var selectedAddress = null;
 var uartRx = null;
 var uartTx = null;
 var batt = 100;
+var temp = 0;
 var flag = 0;
 
 
@@ -35,11 +36,18 @@ function findUARTCharacteristics(services) {
                 uartRx.removeAllListeners('data');
                 uartRx.on('data', function(data) {
                     flag = 1;
-                    var currentBatt = parseInt(String(data));
-                    if (currentBatt < batt){
-                        batt = currentBatt;
+                    var myData = String(data);
+                    if (myData.length == 8){
+                    myData = myData.split(":");
+                        temp = parseFloat(myData[1]);
+                        var currentBatt = parseInt(myData[0]);
+                        if (currentBatt > 10) {
+                            if (currentBatt < batt) {
+                                batt = currentBatt;
+                            }
+                        }
                     }
-                    console.log(batt);
+
                 });
                 uartRx.notify(true);
             }
@@ -99,8 +107,10 @@ app.on('ready', function() {
     {
         event.returnValue = {
             batt: batt,
+            temp: temp,
             flag: flag
         };
+
     }
 });
 
@@ -113,15 +123,14 @@ app.on('ready', function() {
     });
 
     noble.on('discover', function(peripheral) {
-    var str = peripheral.address;
-     if (str.includes("f4:8e:07:df:84:93") ) {
-         selectedDevice = peripheral;
-         selectedAddress = peripheral.address;
-         console.log(selectedDevice.address);
-         console.log("scan stopped");
-         noble.stopScanning();
-         selectedDevice.connect(connected);
-     }
+        var str = peripheral.address;
+        if (str.includes("f4:8e:07:df:84:93") ) {
+            selectedDevice = peripheral;
+            selectedAddress = peripheral.address;
+            console.log(selectedDevice.address);
+            noble.stopScanning();
+            selectedDevice.connect(connected);
+        }
     });
 });
 
