@@ -7,7 +7,7 @@
  */
 
 var electron = require('electron');
-var noble  = require('noble');
+var  noble  = require('noble');
 var {app,ipcMain} = electron;
 var BrowserWindow = electron.BrowserWindow;
 
@@ -42,9 +42,7 @@ function findUARTCharacteristics(services) {
                         temp = parseFloat(myData[1]);
                         var currentBatt = parseInt(myData[0]);
                         if (currentBatt > 10) {
-                            if (currentBatt < batt) {
                                 batt = currentBatt;
-                            }
                         }
                     }
 
@@ -99,12 +97,12 @@ app.on('ready', function() {
         mainWindow = null;
     });
 
-//    mainWindow.toggleDevTools();
+    //    mainWindow.toggleDevTools();
     noble.state = 'poweredOn';
 
     ipcMain.on('poll', (event, arg) => {
         if(batt > 10)
-    {
+    { //console.log(temp);
         event.returnValue = {
             batt: batt,
             temp: temp,

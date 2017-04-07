@@ -6,7 +6,7 @@
  *
  */
 
-
+const TIMEOUTS = 45000;
 var chartData;
 var data;
 var {ipcRenderer, remote} = require('electron');
@@ -75,13 +75,11 @@ function generateChartData() {
     var currentTime = new Date();
     chartData.push({
         date: currentTime,
-        temp: data.batt
+        temp: data.temp
     });
     return chartData;
 }
 
-
-
-setInterval(function(){ plot(); }, 45000);
+setInterval(function(){ plot(); }, TIMEOUTS);
 
 

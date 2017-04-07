@@ -1,3 +1,4 @@
+
 {
   "name": "Brewer",
   "version": "1.0.0",
@@ -5,12 +6,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "build-osx": "electron-packager ./src --electronVersion 1.6.4 --platform darwin --out ./scripts --overwrite "
   },
   "author": "M.Mourraille",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^1.6.2",
-    "electron-rebuild": "^1.5.7"
+    "electron": "^1.6.5",
+    "electron-packager": "^8.6.0",
+    "electron-rebuild": "^1.5.7",
+    "noble": "^1.8.0"
   }
 }

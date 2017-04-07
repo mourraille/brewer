@@ -2,9 +2,11 @@
  * Created by mauriciomourraille on 3/30/17.
  */
 
+const TIMEOUT = 1000;
 var percentage;
 var deg;
 var firstTime = false;
+
 
 
 function pollData() {
@@ -24,6 +26,7 @@ function pollData() {
         $("#temp").html("Attempting connection to controller...");
         $("#chartdiv").html('<img src="spinner.gif" style="margin-left: 27%;" height="500" width="600"/><h4 style="text-align: center; margin-top: -52px;">(Retrieving chart data)</h4></img>');
         $('#cre').html("");
+        plot();
     }
 
 }
@@ -31,6 +34,11 @@ function pollData() {
 
 
 function formatDisplayableVariables() {
+
+    if (deg == 82.5) {
+        $("#temp").html('<span style="color: rgb(0, 0, ' + color + '); font-size:' + (deg + 68) + '%">  data on buffer...  </span>' );
+   return;
+    }
 
     if (deg < 67) {
         var color = 275 - (parseInt(deg)+10);
@@ -50,7 +58,7 @@ function formatDisplayableVariables() {
         $("#temp").css('color','black');
     }
 
-    if(percentage > 30) {
+    if(percentage > 50) {
         $("#batt").html('Remaining battery: &nbsp<span style="color: lightseagreen;">'+percentage+'%</span>');
     } else {
         $("#batt").html('Remaining battery: &nbsp<span style="color: red;">'+percentage+'%</span>');
@@ -60,5 +68,5 @@ function formatDisplayableVariables() {
 
 setInterval(function () { pollData()
 
-}, 1000);
+}, TIMEOUT);
 
